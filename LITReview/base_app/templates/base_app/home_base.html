@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LITReview</title>
+    <link rel="stylesheet" href="{% static '/base_app/stylesheets/home_base.css' %}" type="text/css">
+</head>
+<body>
+    <img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
+    <div class="content">
+        <div class="buttons">
+            <div class="loggin">
+                {% block loggin %}{% endblock %}
+            </div>
+            <div class="signup">
+                {% block signup %}{% endblock %}
+            </div>
+        </div>
+        <div id="logo"><img src="{% static 'base_app/images/logo.png' %}"></div>
+    </div>
+</body>
+</html>

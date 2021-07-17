@@ -1,0 +1,13 @@
+{% extends 'base_app/home_base.html' %}
+
+{% block loggin %}
+    {% if not user.is_authenticated %}
+      <button class="home-buttons" id="login-button"><a class = "home-links" href= "{% url 'login' %}"> Connectez-vous </a></button>
+    {% endif %}
+{% endblock %}
+
+{% block signup %}
+    {% if not user.is_authenticated %}
+      <button class="home-buttons" id="signup-button"><a class = "home-links" href= "{% url 'signup' %}"> Inscrivez-vous </a></button>
+    {% endif %}
+{% endblock %}

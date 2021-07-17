@@ -1,0 +1,60 @@
+@font-face{
+    font-family: 'Apple Chancery';
+    src: url('Apple Chancery.ttf');
+}
+
+body{
+    font-family: 'Apple Chancery';
+    text-shadow: 2px 2px 4px grey;
+    color: black;
+}
+
+.background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+
+#logo{
+    position: relative;
+    left: 550px;
+    top: -80px;
+}
+
+#login-button{
+    position: relative;
+    left: 260px;
+    top: 280px;
+}
+
+#signup-button{
+    position: relative;
+    left: 800px;
+    top: 226px;
+}
+
+.home-buttons{
+    background: gold;
+    border-radius: 20px;
+    box-shadow: 6px 6px 0px black;
+    text-shadow: 2px 2px 4px black;
+}
+
+.home-buttons:hover{
+    background: grey;
+}
+
+.home-links{
+    background: none;
+    font-family: "Apple Chancery";
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+

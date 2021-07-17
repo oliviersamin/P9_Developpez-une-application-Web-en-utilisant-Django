@@ -1,0 +1,26 @@
+<div class="review">
+    <div class="top-review">
+        <div>{{post.user.username}} a posté une critique </div>
+        <div>{{post.time_created}}</div>
+    </div>
+    <h3> {{post.headline}}  -  {{post.rating}} </h3>
+    <div class="review-content">
+        <p class="description">{{post.body}}</p>
+    </div>
+    <section class="ticket_inside_review">
+        <div class="ticket_in_review">
+            <div class="top-ticket-review">
+                <div>Ticket - {{post.ticket.user.username}}</div>
+                <div>{{post.ticket.time_created}}</div>
+            </div>
+            <h3> {{post.ticket.title}} </h3>
+            <div class="ticket-content-review">
+                <img src="{{post.ticket.image}}">
+                <p class="description">{{post.ticket.description}}</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!--        <a href="#" onClick="myTabs.next(); return false">Come back to first tab</a> </article>-->
+</div>

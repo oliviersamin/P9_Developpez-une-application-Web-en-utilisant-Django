@@ -1,0 +1,12 @@
+{% extends 'base_app/base.html' %}
+
+{% block flux-posts %}
+    {% for post in posts %}
+        {% if post.content_type == 'TICKET'%}
+            {% include 'base_app/ticket.html' %}
+        {% elif post.content_type == 'REVIEW'%}
+            {% include 'base_app/review.html' %}
+                {% endif %}
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,182 @@
+/* Structure */
+html{
+	background: #eee;
+}
+body {
+  padding: 0px;;
+  margin: 0 auto;
+  max-width: 900px;
+  font: 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+a {
+  color: #105672;
+}
+
+header {
+    top: 0;
+	line-height: 1;
+	background: grey;
+    display: flex;
+    align-items: center;
+    width: 71%;
+	position: fixed;
+
+}
+
+#logo{
+    margin-left: 5%;
+    margin-right: 20%;
+
+}
+
+header nav{
+	float: right;
+	text-align: right;
+}
+header nav div{
+	font-size: .8em;
+}
+header nav div a {
+	font-weight: 300;
+	padding: .3em .5em
+}
+header nav a{
+	color: #fff;
+	display: inline-block;
+	padding: .3em .8em;
+
+}
+
+header nav a:hover, header nav a:focus{
+	color: rgba(255,255,255,.6)
+}
+
+
+[role=main]{
+	padding:1.5em 3em;
+}
+
+#flux-posts{
+    background: grey;
+    margin-top: 15%;
+/*    border: 3px black solid;
+*/
+}
+
+/*  TICKETS  */
+
+.ticket{
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+	padding: 1em 0;
+    margin-top: 1%;
+    background: white;
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
+.top-ticket{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-content{
+    display: flex;
+}
+
+.description{
+    margin-left: 5%;
+    width: 600px;
+}
+
+/* REVIEWS */
+
+.review{
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+	padding: 1em 0;
+    margin-top: 1%;
+    background: white;
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
+.top-review{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-content{
+    display: flex;
+}
+
+.description{
+    margin-left: 1%;
+    width: 600px;
+}
+
+.ticket_inside_review{
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+	padding: 1em 0;
+    margin-top: 1%;
+    background: white;
+    padding-left: 10%;
+    padding-right: 2%;
+}
+.top-ticket-review{
+    display:flex;
+    justify-content: space-between;
+}
+
+.ticket-content-review{
+    display: flex;
+}
+
+footer{
+	background: grey;
+	color: #fff;
+	margin-top: 5%;
+	padding: .1em 3em;
+}
+
+/* Typography */
+
+p{
+	font: 1em/1.5 Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
+}
+
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+
+blockquote{
+	float: left;
+	margin: 1em 3em;
+}
+blockquote p{
+	font-size: 1.4em;
+	line-height: 1.2;
+	font-weight: 700;
+	font-style:italic;
+}
+a{
+	font: 700 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none
+}
+a:hover, a:focus{
+	color: #000;
+}
+a:active{
+	position: relative;
+	top:1px;
+}
