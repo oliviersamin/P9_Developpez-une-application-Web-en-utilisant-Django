@@ -132,4 +132,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/base_app/flux.html'
-LOGOUT_REDIRECT_URL = '/base_app/login'
+LOGOUT_REDIRECT_URL = '/'
+SIGNUP_REDIRECT_URL = '/base_app/login.html'

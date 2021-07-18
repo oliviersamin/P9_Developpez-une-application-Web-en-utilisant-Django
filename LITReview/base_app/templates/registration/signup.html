@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Loggin</title>
+    <title>Inscription</title>
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/signup.css' %}" type="text/css">
 </head>
 <body>
@@ -15,41 +15,45 @@
 <!--  <button id="signup" type="submit">S'inscrire</button>-->
 <!--</form>-->
 
-{{ form.non_field_errors }}
-<div class="username">
-    <div class="fieldWrapper" id="username">
-        {{ form.username.errors }}
-        <label for="{{ form.username.id_for_label }}">Username:</label>
-        {{ form.username }}
-    </div>
-    <button type="button" class="helptext-button" title=
-            "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."> ? </button>
-</div>
+<form method="post">
+    {% csrf_token %}
+    {% for error in form.errors.values %}
+        <div class="errors">
+             {{error}}
+        </div>
+    {% endfor %}
 
-<div class="password1">
-    <div class="fieldWrapper" id="password1">
-        {{ form.password1.errors }}
-        <label for="{{ form.password1.id_for_label }}">Password:</label>
-        {{ form.password1 }}
+    <div class="username">
+        <div class="fieldWrapper" id="username">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        <button type="button" id="helptext-username" title=
+                "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."> ? </button>
     </div>
-    <button type="button" class="helptext-button"
-            title="Your password can’t be too similar to your other personal information.
-Your password must contain at least 8 characters.
-Your password can’t be a commonly used password.
-Your password can’t be entirely numeric."> ?
-    </button>
-</div>
 
-<div class="password2">
-    <div class="fieldWrapper" id="password2">
-        {{ form.password2.errors }}
-        <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
-        {{ form.password2 }}
+    <div class="password1">
+        <div class="fieldWrapper" id="password1">
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+        </div>
+        <button type="button" id="helptext-password1"
+                title="Your password can’t be too similar to your other personal information.
+    Your password must contain at least 8 characters.
+    Your password can’t be a commonly used password.
+    Your password can’t be entirely numeric."> ?
+        </button>
     </div>
-    <button type="button" id="helptext-password2"
-            title="Enter the same password as before, for verification."> ? </button>
-</div>
-<button class="validation-button" type="submit">S'inscrire</button>
 
+    <div class="password2">
+        <div class="fieldWrapper" id="password2">
+            <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
+            {{ form.password2 }}
+        </div>
+        <button type="button" id="helptext-password2"
+                title="Enter the same password as before, for verification."> ? </button>
+    </div>
+    <button class="validation-button" type="submit">S'inscrire</button>
+</form>
 </body>
 </html>

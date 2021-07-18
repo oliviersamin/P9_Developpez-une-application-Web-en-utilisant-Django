@@ -21,7 +21,7 @@ body{
 h2{
     font-size: 60px;
     font-weight: bold;
-    position: relative;
+    position: absolute;
     left: 490px;
     top: 100px;
 }
@@ -29,42 +29,60 @@ h2{
 .fieldWrapper{
     font-size: 30px;
     font-weight: bold;
+    color: black;
+    text-shadow: 8px 8px 16px white;
+
 }
 
 .username{
-    position: relative;
+    position: absolute;
     left: 510px;
-    top: 177px;
+    top: 370px;
+
 }
 
-.helptext-button{
-    position: relative;
+#helptext-username{
+    position: absolute;
     left: 370px;
-    top: -30px;
+    top: 18px;
     border-radius: 15px;
     background: gold;
     text-shadow: 2px 2px 4px black;
 }
 
-.helptext-button:hover{
+#helptext-username:hover{
     background: grey;
 }
 
 .password1{
-    position: relative;
-    left: 510px;
-    top: 160px;
+    position: absolute;
+    left: 520px;
+    top: 420px;
+}
+
+#helptext-password1{
+    position: absolute;
+    left: 360px;
+    top: 18px;
+    border-radius: 15px;
+    background: gold;
+    text-shadow: 2px 2px 4px black;
+
+}
+
+#helptext-password1:hover{
+    background: grey;
 }
 
 .password2{
-    position: relative;
-    left: 410px;
-    top: 150px;
+    position: absolute;
+    left: 345px;
+    top: 460px;
 }
 
 #helptext-password2{
     position: relative;
-    left: 540px;
+    left: 535px;
     top: -30px;
     border-radius: 15px;
     background: gold;
@@ -79,9 +97,9 @@ h2{
 .validation-button{
     font-family: 'Apple Chancery';
     font-weight: bold;
-    position: relative;
-    left: 585px;
-    top: 160px;
+    position: absolute;
+    left: 590px;
+    top: 550px;
     border-radius: 15px;
     color: black;
     background: gold;
@@ -97,4 +115,15 @@ h2{
 .label{
     text-shadow: 2px 2px 4px gold;
     color: black;
+}
+
+.errors{
+    position: absolute;
+    left: 450px;
+    top: 230px;
+    color: black;
+    text-shadow: 2px 2px 4px red;
+    font-weight: bold;
+    font-size: 22px;
+
 }

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Loggin</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/loggin.css' %}" type="text/css">
 </head>
 <body>
@@ -11,7 +11,11 @@
 <h2>Se connecter</h2>
 <form method="post">
     {% csrf_token %}
-    {{ form.non_field_errors }}
+    {% for field in form.non_field_errors %}
+        <div class="errors">
+             {{ field }}
+        </div>
+    {% endfor %}
     <div class="username">
         <div class="fieldWrapper" id="username">
             {{ form.username.errors }}
@@ -27,7 +31,20 @@
             {{ form.password }}
         </div>
     </div>
+
     <button class="validation-button" type="submit">Se connecter</button>
+
 </form>
+
+
+<!--errorlist nonfield-->
+
+
+<!--<h2>Log In</h2>-->
+<!--<form method="post">-->
+<!--  {% csrf_token %}-->
+<!--  {{ form.as_p }}-->
+<!--  <button type="submit">Log In</button>-->
+<!--</form>-->
 </body>
 </html>

@@ -20,21 +20,21 @@ body{
 
 
 #logo{
-    position: relative;
-    left: 550px;
-    top: -80px;
+    position: absolute;
+    left: 558px;
+    top:  70px;
 }
 
 #login-button{
-    position: relative;
-    left: 260px;
-    top: 280px;
+    position: absolute;
+    left: 290px;
+    top: 290px;
 }
 
 #signup-button{
-    position: relative;
-    left: 800px;
-    top: 226px;
+    position: absolute;
+    left: 770px;
+    top: 290px;
 }
 
 .home-buttons{
