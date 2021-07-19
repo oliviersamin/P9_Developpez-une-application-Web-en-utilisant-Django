@@ -1,13 +1,33 @@
-/* Structure */
-html{
-	background: #eee;
+@font-face{
+    font-family: 'Apple Chancery';
+    src: url('Apple Chancery.ttf');
 }
+
 body {
+  background-image: url("../images/fond_bibli_resized.png");
+  background-attachment: fixed;
   padding: 0px;;
   margin: 0 auto;
   max-width: 900px;
-  font: 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: visible;
+  color: black; 
+  font-size: 18px;
+
   }
+
+.background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    overflow: hidden;
+}
+
+#feed{
+    overflow: scroll;
+}
 
 a {
   color: #105672;
@@ -19,9 +39,15 @@ header {
 	background: grey;
     display: flex;
     align-items: center;
-    width: 71%;
-	position: fixed;
+    width: 99%;
+/*	position: fixed; */
+}
 
+.link{
+    font-family: 'Apple Chancery';
+    text-shadow: 2px 2px 4px white;
+    color: black;
+    font-size: 24px;
 }
 
 #logo{

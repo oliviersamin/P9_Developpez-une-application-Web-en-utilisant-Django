@@ -47,7 +47,7 @@ h2{
     font-family: 'Apple Chancery';
     font-weight: bold;
     position: absolute;
-    left: 585px;
+    left: 785px;
     top: 500px;
     border-radius: 15px;
     color: black;
@@ -70,4 +70,26 @@ h2{
     font-weight: bold;
     font-size: 22px;
 
+}
+
+.back_home{
+    font-family: 'Apple Chancery';
+    font-weight: bold;
+    position: absolute;
+    left: 435px;
+    top: 500px;
+    border-radius: 15px;
+    color: black;
+    background: gold;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px black;
+
+}
+
+.back_home:hover{
+    background: grey;
+}
+#home{
+    color: black;
+    text-decoration: none;
 }

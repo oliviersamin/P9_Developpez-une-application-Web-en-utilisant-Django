@@ -9,12 +9,6 @@
 <body>
 <img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
 <h2>Inscription</h2>
-<!--<form class="form" method="post">-->
-<!--  {% csrf_token %}-->
-<!--  <div class="input">{{ form.as_p }}</div>-->
-<!--  <button id="signup" type="submit">S'inscrire</button>-->
-<!--</form>-->
-
 <form method="post">
     {% csrf_token %}
     {% for error in form.errors.values %}
@@ -55,5 +49,6 @@
     </div>
     <button class="validation-button" type="submit">S'inscrire</button>
 </form>
+<button class="back_home"><a id="home" href="../../">Page d'accueil</a></button>
 </body>
 </html>

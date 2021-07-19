@@ -24,7 +24,7 @@ urlpatterns = [
     path('base_app/', include('accounts.urls')),  # signup
     path('base_app/', include('django.contrib.auth.urls')),  # loggin
     url(r'^$', views.home),
-    url(r'^base_app/index.html$', views.index, name="flux"),
+    # url(r'^base_app/feed.html$', views.feed, name="feed"),
     url(r'^base_app/', include('base_app.urls')),
     # url(r'^$', views.index, name="flux")
 ]

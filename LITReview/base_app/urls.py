@@ -20,6 +20,6 @@ from . import views
 from .views import SignUpView
 
 urlpatterns = [
-    url(r'/', views.index, name="flux"),
+    url(r'/', views.feed, name="feed"),
     url('signup/', SignUpView.as_view(), name='signup'),
 ]
