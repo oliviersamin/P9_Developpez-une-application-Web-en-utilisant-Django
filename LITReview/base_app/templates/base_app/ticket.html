@@ -1,5 +1,4 @@
-<!--{% load static %}-->
-{% static "/base_app/PUBLIC_IMAGES" as baseUrl %}
+{% load static %}
 <div class="ticket">
     <div class="top-ticket">
         <div>{{post.user.username}} a demandé une critique </div>
@@ -7,7 +6,8 @@
     </div>
     <h3> {{post.title}} </h3>
     <div class="ticket-content">
-        <img src="{{post.image}}">
+        <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{post.image_path}}">
+<!--        <img src="../../{{post.image}}">-->
         <p class="description">{{post.description}}</p>
     </div>
 <!--                <a href="#" onClick="myTabs.next(); return false">Come back to first tab</a> </article>-->

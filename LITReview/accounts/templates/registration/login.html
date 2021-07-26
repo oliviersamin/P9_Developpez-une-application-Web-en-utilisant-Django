@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="{% static '/base_app/stylesheets/loggin.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/accounts/stylesheets/loggin.css' %}" type="text/css">
 </head>
 <body>
 <img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
@@ -34,7 +34,8 @@
 
     <button class="validation-button" type="submit">Se connecter</button>
 </form>
-<button class="back_home"><a id="home" href="../../">Page d'accueil</a></button>
+<button class="back_home"><a id="home" href="{% url 'home' %}">Page d'accueil</a></button>
+<!--<button class="back_home"><a id="home" href="../../">Page d'accueil</a></button>-->
 
 </body>
 </html>

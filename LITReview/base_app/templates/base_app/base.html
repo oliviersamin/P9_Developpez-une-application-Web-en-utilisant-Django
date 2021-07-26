@@ -8,13 +8,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-<!--    <img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">-->
     <header>
       <div id="logo"><img src="{% static 'base_app/images/logo2.png' %}" alt=""></div>
-      <nav> <a class="link" href="#">Flux</a><a class="link" href="#">Posts</a> <a class="link" href="#">Abonnements</a>
+      <nav> <a class="link" href="{% url 'base_app:feed' %}">Flux</a> <a class="link" href="#">Posts</a> <a class="link" href="#">Abonnements</a>
         <a class="link" href="{% url 'logout' %}">Se déconnecter</a>
       </nav>
     </header>
+    <div id="critic_buttons">
+        <button id="ask_critic"><a class="critic_links" href="{%url 'base_app:creation_ticket'%}">
+            Demander une critique</a></button>
+        <button id="create_critic"><a class="critic_links" href="{%url 'base_app:creation_critic'%}">
+            Créer une critique</a></button>
+    </div>
+
     <section id="feed">
       {% block flux-posts %}{% endblock %}
     </section>

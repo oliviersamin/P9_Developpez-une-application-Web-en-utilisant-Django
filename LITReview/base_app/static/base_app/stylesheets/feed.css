@@ -10,7 +10,7 @@ body {
   margin: 0 auto;
   max-width: 900px;
   overflow: visible;
-  color: black; 
+  color: black;
   font-size: 18px;
 
   }
@@ -23,14 +23,6 @@ body {
     height: 100%;
     opacity: 0.6;
     overflow: hidden;
-}
-
-#feed{
-    overflow: scroll;
-}
-
-a {
-  color: #105672;
 }
 
 header {
@@ -86,8 +78,6 @@ header nav a:hover, header nav a:focus{
 #flux-posts{
     background: grey;
     margin-top: 15%;
-/*    border: 3px black solid;
-*/
 }
 
 /*  TICKETS  */
@@ -172,8 +162,8 @@ footer{
 	padding: .1em 3em;
 }
 
-/* Typography */
-
+/* Typography
+*/
 p{
 	font: 1em/1.5 Palatino, "Palatino Linotype", Georgia, Times, "Times New Roman", serif;
 }
@@ -205,4 +195,42 @@ a:hover, a:focus{
 a:active{
 	position: relative;
 	top:1px;
+}
+
+#critic_buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#ask_critic{
+    border-radius: 15px;
+    color: black;
+    background: grey;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px white;}
+
+#ask_critic:hover{
+    background: gold;
+}
+
+#create_critic{
+    border-radius: 15px;
+    color: black;
+    background: grey;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px white;
+}
+
+#create_critic:hover{
+    background: gold;
+}
+
+
+.critic_links{
+    font-family: 'Apple Chancery';
+    font-weight: bold;
+    color: black;
+
 }

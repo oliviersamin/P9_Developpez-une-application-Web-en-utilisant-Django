@@ -1,3 +1,4 @@
+{% load static %}
 <div class="review">
     <div class="top-review">
         <div>{{post.user.username}} a posté une critique </div>
@@ -15,7 +16,7 @@
             </div>
             <h3> {{post.ticket.title}} </h3>
             <div class="ticket-content-review">
-                <img src="{{post.ticket.image}}">
+                <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{post.ticket.image_path}}">
                 <p class="description">{{post.ticket.description}}</p>
             </div>
         </div>

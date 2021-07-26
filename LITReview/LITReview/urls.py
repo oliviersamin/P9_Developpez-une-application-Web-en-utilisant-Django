@@ -21,10 +21,9 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('content/', admin.site.urls),
-    path('base_app/', include('accounts.urls')),  # signup
-    path('base_app/', include('django.contrib.auth.urls')),  # loggin
-    url(r'^$', views.home),
-    # url(r'^base_app/feed.html$', views.feed, name="feed"),
-    url(r'^base_app/', include('base_app.urls')),
-    # url(r'^$', views.index, name="flux")
+    path('accounts/', include('accounts.urls')),  # signup
+    path('accounts/', include('django.contrib.auth.urls')),  # loggin
+    path('base_app/', include('base_app.urls')),
+    url(r'^$', views.home, name="home"),
+
 ]

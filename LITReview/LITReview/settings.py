@@ -14,9 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-APP_DIR = BASE_DIR / 'base_app'
-PUBLIC_IMAGES = APP_DIR / 'static' / 'base_app' / 'PUBLIC_IMAGES'
-STATIC_DIR = BASE_DIR / 'base_app' / 'static' / 'base_app'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -34,13 +31,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'base_app.apps.BaseAppConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts'
+
 ]
 
 MIDDLEWARE = [
@@ -60,6 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [str(BASE_DIR.joinpath('templates', 'base_app')),
+                 str(BASE_DIR.joinpath('templates', 'accounts')),
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -124,13 +123,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_URL_PUBLIC_IMAGES = '/static/base_app/PUBLIC_IMAGES/'
 
+STATICFILES_DIRS = [
+    ("root", "/"),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/base_app/feed.html'
+LOGIN_REDIRECT_URL = '/base_app/feed'
 LOGOUT_REDIRECT_URL = '/'
-SIGNUP_REDIRECT_URL = '/base_app/login.html'
+SIGNUP_REDIRECT_URL = '/accounts/login'
