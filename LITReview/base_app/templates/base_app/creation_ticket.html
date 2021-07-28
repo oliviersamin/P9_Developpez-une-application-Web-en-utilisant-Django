@@ -10,7 +10,7 @@
 <body>
 <img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
 <h2>Créer un ticket</h2>
-<form method="post" enctype="multipart/form-data" action="{% url 'base_app:feed' %}">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form.non_field_errors %}
         <div class="errors">
