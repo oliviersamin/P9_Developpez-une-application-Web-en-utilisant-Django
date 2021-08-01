@@ -25,5 +25,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # loggin
     path('base_app/', include('base_app.urls')),
     url(r'^$', views.home, name="home"),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
 ]

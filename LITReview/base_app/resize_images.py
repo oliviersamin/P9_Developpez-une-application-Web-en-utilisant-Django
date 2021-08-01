@@ -80,8 +80,7 @@ class ResizeImage:
         """ use the dict from self.__get_directory_and_image_name  to give values to the attributes"""
         dico = self.__get_directory_and_image_name(image)
         self.original_image_name = dico['image_name']
-        self.new_image_name = self.original_image_name[:self.original_image_name.find('.')] + "_resized" + \
-                         self.original_image_name[self.original_image_name.find('.'):]
+        self.new_image_name = self.original_image_name
         self.directory = dico['directory']
 
 

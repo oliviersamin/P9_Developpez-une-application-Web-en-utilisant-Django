@@ -5,7 +5,7 @@ from itertools import chain
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateTicket
+from .forms import CreateTicket, CreateReview
 from . import filter_viewable_posts as fv
 # from . import resize_images as ri
 import os
@@ -26,13 +26,9 @@ def creation_ticket(request):
         if form.is_valid():
             ticket = form.save(commit=False)
             ticket.user = request.user
-            print(type(ticket.image), ticket.image.path)
+            # print(type(ticket.image), ticket.image.path)
             ticket.save()
             os.system('python base_app/resize_images.py -i {} -max_w 200'.format(ticket.image))
-            new_image_name = ticket.image.path[:ticket.image.path.find('.')] + "_resized" + \
-                             ticket.image.path[ticket.image.path.find('.'):]
-            ticket.image.path = os.path.join(ticket.image_directory_saved, new_image_name)
-            print(ticket.image.path)
             return redirect('feed/')
         else:
             print('form no valid!!!!')
@@ -43,8 +39,32 @@ def creation_ticket(request):
         return render(request, 'base_app/creation_ticket.html', context=context)
 
 def creation_critic(request):
-    context = {}
-    return render(request, 'base_app/creation_critic.html', context=context)
+    if (request.method == "POST"):
+        form_ticket = CreateTicket(request.POST, request.FILES)
+        form_review = CreateReview(request.POST)
+        if form_ticket.is_valid() and form_review.is_valid():
+            ticket = form_ticket.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+            os.system('python base_app/resize_images.py -i {} -max_w 200'.format(ticket.image))
+            review = form_review.save(commit=False)
+            review.ticket = ticket
+            review.user = request.user
+            review.save()
+            # ticket.delete()
+            return redirect('feed/')
+        else:
+            print('at least one of the two forms is not valid!!!!')
+            form_ticket = CreateTicket()
+            form_review = CreateReview()
+            context = {'form_ticket': form_ticket, 'form_review': form_review}
+            return render(request, 'base_app/creation_critic.html', context=context)
+    else:
+        form_ticket = CreateTicket()
+        form_review = CreateReview()
+        context = {'form_ticket': form_ticket, 'form_review': form_review}
+        # return render(request, 'base_app/creation_ticket.html', context=context)
+        return render(request, 'base_app/creation_critic.html', context=context)
 
 def feed(request):
     """ display the stream which is on the first page after success login of the user """

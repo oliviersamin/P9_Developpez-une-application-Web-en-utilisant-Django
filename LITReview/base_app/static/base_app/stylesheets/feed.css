@@ -105,7 +105,9 @@ header nav a:hover, header nav a:focus{
 
 .description{
     margin-left: 5%;
-    width: 600px;
+    width: 100px;
+    word-wrap: break-word;
+
 }
 
 /* REVIEWS */
@@ -133,7 +135,8 @@ header nav a:hover, header nav a:focus{
 
 .description{
     margin-left: 1%;
-    width: 600px;
+    width: 100px;
+    word-wrap: break-word;
 }
 
 .ticket_inside_review{

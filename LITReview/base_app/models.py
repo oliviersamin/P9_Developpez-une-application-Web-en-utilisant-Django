@@ -1,7 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
 from django.db import models
-from librairies import resize_images as ri
 
 
 class Ticket(models.Model):
@@ -19,7 +18,6 @@ class Ticket(models.Model):
     def image_path(self):
         path = self.image.path[::-1][:self.image.path[::-1].find('/')]
         return path[::-1]
-
 
 
 class Review(models.Model):
