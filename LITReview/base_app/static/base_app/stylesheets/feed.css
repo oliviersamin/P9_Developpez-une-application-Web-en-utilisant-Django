@@ -80,6 +80,32 @@ header nav a:hover, header nav a:focus{
     margin-top: 15%;
 }
 
+.change_buttons{
+    display: flex;
+    justify-content: right;
+    padding-right: 2%;
+}
+
+.end_button{
+    border-radius: 7px;
+    background: grey;
+    font-size: 18px;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px white;
+    margin-left: 2%;
+    visibility: normal;
+}
+.delete{
+    color: black;
+}
+
+.end_button:hover{
+    background: gold;
+}
+.modify{
+    color: black;
+}
+
 /*  TICKETS  */
 
 .ticket{
@@ -105,11 +131,23 @@ header nav a:hover, header nav a:focus{
 
 .description{
     margin-left: 5%;
-    width: 100px;
+    width: 600px;
     word-wrap: break-word;
 
 }
 
+
+#add_critic{
+    border-radius: 7px;
+    background: grey;
+    margin: auto;
+    font-size:18px;
+    text-shadow: 2px 2px 4px white;
+}
+
+#add_critic:hover{
+    background: gold;
+}
 /* REVIEWS */
 
 .review{
@@ -134,8 +172,9 @@ header nav a:hover, header nav a:focus{
 }
 
 .description{
+    margin-top: -2%;
     margin-left: 1%;
-    width: 100px;
+    width: 600px;
     word-wrap: break-word;
 }
 
@@ -212,7 +251,8 @@ a:active{
     color: black;
     background: grey;
     font-size: 30px;
-    text-shadow: 2px 2px 4px white;}
+    text-shadow: 2px 2px 4px white;
+    }
 
 #ask_critic:hover{
     background: gold;
@@ -235,5 +275,22 @@ a:active{
     font-family: 'Apple Chancery';
     font-weight: bold;
     color: black;
+}
 
+#rating_stars{
+    margin-left: 2%;
+    width: 25%;
+    height: 25%;
+}
+
+#headline{
+    margin-top: 0%;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#headline_review{
+    display: flex;
+    margin-top: 2%;
 }

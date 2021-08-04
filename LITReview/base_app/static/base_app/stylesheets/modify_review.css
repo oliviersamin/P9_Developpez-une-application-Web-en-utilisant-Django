@@ -19,61 +19,49 @@ body{
 }
 
 h2{
-    font-size: 60px;
+    font-size: 42px;
     font-weight: bold;
     position: absolute;
-    left: 450px;
-    top: -50px;
+    left: 400px;
+    top: 0px;
 }
 
 .fieldWrapper{
-    font-size: 30px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .title{
     position: absolute;
-    left: 80px;
+    left: 150px;
     top: 200px;
+    word-wrap: break-word;
+    width: 250px;
 }
 
 .description{
     position: absolute;
-    left: 80px;
-    top: 250px;
+    left: 150px;
+    top: 310px;
 }
 
-#id_description{
+#ticket_description{
+    word-wrap: break-word;
+    width: 430px;
+}
+
+#image_ticket{
     position: absolute;
-    top: 290;
+    left: 230px;
+    top: -185px; */
 }
 
-.image{
-    position: absolute;
-    left: 80px;
-    top: 480px;
-
-}
-
-#id_image{
-    position: absolute;
-    left: 120px;
-    top: 10px;
-    color: black;
-    font-family: 'Apple Chancery';
-    font-weight: bold;
-    font-size: 20px;
-    color: black;
-    text-shadow: 2px 2px 4px black;
-
-
-}
 
 .validation-button{
     font-family: 'Apple Chancery';
     font-weight: bold;
     position: absolute;
-    left: 750px;
+    left: 870px;
     top: 560px;
     border-radius: 15px;
     color: black;
@@ -102,7 +90,7 @@ h2{
     font-family: 'Apple Chancery';
     font-weight: bold;
     position: absolute;
-    left: 130px;
+    left: 250px;
     top: 560px;
     border-radius: 15px;
     color: black;
@@ -123,20 +111,20 @@ h2{
 
 .headline{
     position: absolute;
-    left: 630px;
+    left: 750px;
     top: 200px;
 }
 
 .rating{
     position: absolute;
-    left: 630px;
+    left: 750px;
     top: 250px;
 }
 
 
 .body{
     position: absolute;
-    left: 630px;
+    left: 750px;
     top: 310px;
 }
 
@@ -146,12 +134,12 @@ h2{
 }
 
 #review_field{
-    width:520px;
+    width:450px;
     height:500px;
     border: 3px solid black;
     position: absolute;
     top: 120px;
-    left: 610px;
+    left: 710px;
 }
 
 #book_field{
@@ -160,7 +148,7 @@ h2{
     border: 3px solid black;
     position: absolute;
     top: 120px;
-    left: 10px;
+    left: 130px;
 }
 
 .title_fields{
@@ -173,7 +161,7 @@ h2{
 
 #title_book_field{
     position: absolute;
-    left: 80px;
+    left: 150px;
     top: 100px;
 
 }

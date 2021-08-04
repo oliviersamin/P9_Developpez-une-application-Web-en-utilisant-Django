@@ -10,8 +10,10 @@
 <body>
     <header>
       <div id="logo"><img src="{% static 'base_app/images/logo2.png' %}" alt=""></div>
-      <nav> <a class="link" href="{% url 'base_app:feed' %}">Flux</a> <a class="link" href="#">Posts</a> <a class="link" href="#">Abonnements</a>
-        <a class="link" href="{% url 'logout' %}">Se déconnecter</a>
+      <nav> <a class="link" href="{% url 'base_app:feed' %}">Flux</a>
+          <a class="link" href="{%url 'base_app:my_posts'%}">Posts</a>
+          <a class="link" href="{%url 'base_app:followers'%}">Abonnements</a>
+          <a class="link" href="{% url 'logout' %}">Se déconnecter</a>
       </nav>
     </header>
     <div id="critic_buttons">
@@ -27,5 +29,6 @@
     <footer>
     <p>&copy; Copyright 2021 - Website powered By  LITReview</p>
     </footer>
+<!--    <script language="JavaScript" type="text/html" src="static/js/posts.js"></script>-->
   </body>
 </html>

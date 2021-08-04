@@ -136,3 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/base_app/feed'
 LOGOUT_REDIRECT_URL = '/'
 SIGNUP_REDIRECT_URL = '/accounts/login'
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)

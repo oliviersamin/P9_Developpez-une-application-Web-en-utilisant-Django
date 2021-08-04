@@ -4,12 +4,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Créer une critique</title>
-    <link rel="stylesheet" href="{% static '/base_app/stylesheets/creation_critic.css' %}" type="text/css">
+    <title>Create a review</title>
+    <link rel="stylesheet" href="{% static '/base_app/stylesheets/create_a_review_from_ticket.css' %}" type="text/css">
+
 </head>
 <body>
 <img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
-<h2>Créer une critique</h2>
+<h2>Répondre au ticket de {{ticket.user}}</h2>
 
 <div class="rectangle" id="book_field"></div>
 <p class="title_fields" id="title_book_field">Livre / Article</p>
@@ -17,39 +18,26 @@
 <div class="rectangle" id="review_field"></div>
 <p class="title_fields" id="title_review_field">Critique</p>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form_ticket.non_field_errors %}
-        <div class="errors">
-             {{ field }}
-        </div>
-    {% endfor %}
     <div class="title">
         <div class="fieldWrapper" id="title">
-            {{ form_ticket.title.errors }}
             <label for="{{ form_ticket.title.id_for_label }}">Title:</label>
-            {{ form_ticket.title }}
+            {{ ticket.title }}
         </div>
     </div>
 
     <div class="description">
         <div class="fieldWrapper" id="description">
-            {{ form_ticket.description.errors }}
+            <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{ticket.image_path}}" alt="" id="image_ticket">
             <label for="{{ form_ticket.description.id_for_label }}">Description:</label>
-<!--            {{ form.description }}-->
-            <textarea id="id_description" name="description" cols="40" rows="10" required=""></textarea>
+            <p id="ticket_description">{{ ticket.description }}</p>
 
         </div>
     </div>
 
-    <div class="image">
-        <div class="fieldWrapper" id="image">
-            {{ form_ticket.image.errors }}
-            <label for="{{ form_ticket.image.id_for_label }}">Image:</label>
-            <input type="file" name="image" accept="image/*" required="" id="id_image">
-        </div>
-    </div>
+<!--    <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{ticket.image_path}}" alt="" id="image_ticket">-->
 
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     {% for field in form_review.non_field_errors %}
         <div class="errors">
              {{ field }}
@@ -67,10 +55,10 @@
         <div class="fieldWrapper" id="rating">
             {{ form_review.rating.errors }}
             <label for="{{ form_review.rating.id_for_label }}">Rating:</label>
+<!--            {{ form_review.rating }}-->
             {% for item in  form_review.rating %}
                 {{item}}
             {% endfor %}
-<!--            {{ form_review.rating }}-->
 
         </div>
     </div>

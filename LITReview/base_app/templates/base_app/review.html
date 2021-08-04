@@ -4,7 +4,10 @@
         <div>{{post.user.username}} a posté une critique </div>
         <div>{{post.time_created}}</div>
     </div>
-    <h3> {{post.headline}}  -  {{post.rating}} </h3>
+    <div id="headline_review">
+        <p id="headline">{{post.headline}}</p>
+        <img id="rating_stars" src="{% static '/base_app/images/stars'%}{{post.rating}}.png">
+    </div>
     <div class="review-content">
         <p class="description">{{post.body}}</p>
     </div>
@@ -21,7 +24,8 @@
             </div>
         </div>
     </section>
-
-
-    <!--        <a href="#" onClick="myTabs.next(); return false">Come back to first tab</a> </article>-->
+    <div class="change_buttons">
+        <button class="end_button"><a class="modify" href="{%url 'base_app:modify_review' review_id=post.pk%}">Modifier</a></button>
+        <button class="end_button"><a class="delete" href="{%url 'base_app:delete_review'%}">Supprimer</a></button>
+    </div>
 </div>

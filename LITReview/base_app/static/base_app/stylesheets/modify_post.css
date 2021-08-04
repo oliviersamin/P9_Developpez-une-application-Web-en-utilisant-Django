@@ -14,7 +14,7 @@
 
 body{
     font-family: 'Apple Chancery';
-    text-shadow: 2px 2px 4px white;
+    text-shadow: 2px 2px 4px grey;
     color: black;
 }
 
@@ -23,7 +23,7 @@ h2{
     font-weight: bold;
     position: absolute;
     left: 450px;
-    top: -50px;
+    top: 0px;
 }
 
 .fieldWrapper{
@@ -33,25 +33,26 @@ h2{
 
 .title{
     position: absolute;
-    left: 80px;
-    top: 200px;
+    left: 490px;
+    top: 160px;
 }
 
 .description{
     position: absolute;
-    left: 80px;
-    top: 250px;
+    left: 490px;
+    top: 210px;
 }
 
 #id_description{
     position: absolute;
-    top: 290;
+/*    left: 650; */
+    top: 250;
 }
 
 .image{
     position: absolute;
-    left: 80px;
-    top: 480px;
+    left: 490px;
+    top: 440px;
 
 }
 
@@ -73,8 +74,8 @@ h2{
     font-family: 'Apple Chancery';
     font-weight: bold;
     position: absolute;
-    left: 750px;
-    top: 560px;
+    left: 785px;
+    top: 530px;
     border-radius: 15px;
     color: black;
     background: gold;
@@ -102,8 +103,8 @@ h2{
     font-family: 'Apple Chancery';
     font-weight: bold;
     position: absolute;
-    left: 130px;
-    top: 560px;
+    left: 320px;
+    top: 530px;
     border-radius: 15px;
     color: black;
     background: gold;
@@ -120,66 +121,8 @@ h2{
     text-decoration: none;
 }
 
-
-.headline{
+#current_image{
     position: absolute;
-    left: 630px;
-    top: 200px;
-}
-
-.rating{
-    position: absolute;
-    left: 630px;
-    top: 250px;
-}
-
-
-.body{
-    position: absolute;
-    left: 630px;
-    top: 310px;
-}
-
-#id_body{
-    position: absolute;
-    top: 350;
-}
-
-#review_field{
-    width:520px;
-    height:500px;
-    border: 3px solid black;
-    position: absolute;
-    top: 120px;
-    left: 610px;
-}
-
-#book_field{
-    width:450px;
-    height:500px;
-    border: 3px solid black;
-    position: absolute;
-    top: 120px;
-    left: 10px;
-}
-
-.title_fields{
-    font-size: 30px;
-    font-weight: bold;
-    color: black;
-    text-shadow: 2px 2px 4px grey;
-
-}
-
-#title_book_field{
-    position: absolute;
-    left: 80px;
-    top: 100px;
-
-}
-
-#title_review_field{
-    position: absolute;
-    left: 750px;
-    top: 100px;
+    top: 140px;
+    left: 280px;
 }

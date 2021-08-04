@@ -23,7 +23,15 @@ app_name = 'base_app'
 urlpatterns = [
     url('creation_ticket', views.creation_ticket, name='creation_ticket'),
     url('creation_critic', views.creation_critic, name='creation_critic'),
+    url(r'^modify_ticket_(?P<ticket_id>[0-9]+)$', views.modify_ticket, name='modify_ticket'),
+    url('delete_ticket', views.delete_ticket, name='delete_ticket'),
+    url(r'^modify_review_(?P<review_id>[0-9]+)$', views.modify_review, name='modify_review'),
+    url('delete_review', views.delete_review, name='delete_review'),
+    url('followers', views.followers, name='followers'),
     url('feed', views.feed, name="feed"),
     url('/', views.feed, name="index"),
+    url('my_posts', views.my_posts, name='my_posts'),
+    url(r'^review_from_ticket_(?P<ticket_id>[0-9]+)$', views.create_review_from_ticket,
+        name='create_review_from_ticket'),
 
 ]
