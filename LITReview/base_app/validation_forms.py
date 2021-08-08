@@ -51,6 +51,7 @@ def method_post_modify_review_form(request, old_review):
         return True
     return False
 
+
 def method_post_modify_ticket_form(request, old_ticket):
     form_ticket = CreateTicket(request.POST, request.FILES)
     if form_ticket.is_valid():

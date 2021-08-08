@@ -16,13 +16,14 @@
           <a class="link" href="{% url 'logout' %}">Se déconnecter</a>
       </nav>
     </header>
-    <div id="critic_buttons">
-        <button id="ask_critic"><a class="critic_links" href="{%url 'base_app:creation_ticket'%}">
-            Demander une critique</a></button>
-        <button id="create_critic"><a class="critic_links" href="{%url 'base_app:creation_critic'%}">
-            Créer une critique</a></button>
-    </div>
-
+    {% if buttons %}
+        <div id="critic_buttons">
+            <button id="ask_critic"><a class="critic_links" href="{%url 'base_app:creation_ticket'%}">
+                Demander une critique</a></button>
+            <button id="create_critic"><a class="critic_links" href="{%url 'base_app:creation_critic'%}">
+                Créer une critique</a></button>
+        </div>
+    {% endif %}
     <section id="feed">
       {% block flux-posts %}{% endblock %}
     </section>

@@ -131,8 +131,8 @@ header nav a:hover, header nav a:focus{
 
 .description{
     margin-left: 5%;
-    width: 600px;
     word-wrap: break-word;
+    width: 400px;
 
 }
 
@@ -174,7 +174,7 @@ header nav a:hover, header nav a:focus{
 .description{
     margin-top: -2%;
     margin-left: 1%;
-    width: 600px;
+    width: 500px;
     word-wrap: break-word;
 }
 

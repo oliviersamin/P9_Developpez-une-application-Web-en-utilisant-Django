@@ -1,55 +1,52 @@
+{% extends 'base_app/base.html' %}
 {% load static %}
+{% block flux-posts %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Modifier votre ticket</title>
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/modify_post.css' %}" type="text/css">
-</head>
-<body>
-<img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
-<h2>Modifier votre ticket</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form.non_field_errors %}
-        <div class="errors">
-             {{ field }}
+<div class="content">
+    <div class="rectangle" id="background"></div>
+    <h2>Modifier votre ticket</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form.non_field_errors %}
+            <div class="errors">
+                 {{ field }}
+            </div>
+        {% endfor %}
+
+        <img id="current_image" src="{% static '/base_app/PUBLIC_IMAGES/' %}{{current_image_name}}">
+
+        <div class="title">
+            <div class="fieldWrapper" id="title">
+                {{ form.title.errors }}
+                <label for="{{ form.title.id_for_label }}">Title:</label>
+                {{ form.title }}
+            </div>
         </div>
-    {% endfor %}
 
-    <img id="current_image" src="{% static '/base_app/PUBLIC_IMAGES/' %}{{current_image_name}}">
+        <div class="description">
+            <div class="fieldWrapper" id="description">
+                {{ form.description.errors }}
+                <label for="{{ form.description.id_for_label }}">Description:</label>
+                <p id="false_description"></p>
+                <textarea id="id_description" name="description" cols="40" rows="10" required="">
+                    {{ form.description.value }}
+                </textarea>
 
-    <div class="title">
-        <div class="fieldWrapper" id="title">
-            {{ form.title.errors }}
-            <label for="{{ form.title.id_for_label }}">Title:</label>
-            {{ form.title }}
+            </div>
         </div>
-    </div>
 
-    <div class="description">
-        <div class="fieldWrapper" id="description">
-            {{ form.description.errors }}
-            <label for="{{ form.description.id_for_label }}">Description:</label>
-            <textarea id="id_description" name="description" cols="40" rows="10" required="">
-                {{ form.description.value }}
-            </textarea>
-
+        <div class="image">
+            <div class="fieldWrapper" id="image">
+                {{ form.image.errors }}
+                <label for="{{ form.image.id_for_label }}">Image:</label>
+                <input type="file" name="image" accept="image/*" id="id_image">
+            </div>
         </div>
-    </div>
 
-    <div class="image">
-        <div class="fieldWrapper" id="image">
-            {{ form.image.errors }}
-            <label for="{{ form.image.id_for_label }}">Image:</label>
-            <input type="file" name="image" accept="image/*" id="id_image">
-        </div>
-    </div>
+        <button class="validation-button" type="submit">Modifier votre ticket</button>
+    </form>
 
-    <button class="validation-button" type="submit">Modifier votre ticket</button>
-</form>
-<button class="back_feed"><a id="back_feed" href="{% url 'base_app:feed' %}">Retour au flux</a></button>
+</div>
 
-</body>
-</html>
+{% endblock %}

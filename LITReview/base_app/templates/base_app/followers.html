@@ -1,12 +1,22 @@
+{% extends 'base_app/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% block flux-posts %}
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/followers.css' %}" type="text/css">
-</head>
-<body>
-PAGE DES FOLLOWERS
-</body>
-</html>
+<div class="content">
+<h2>Abonnements</h2>
+
+USERS THAT I FOLLOW:
+<ul>
+    {% for user in users.I_follow %}
+    <li>{{user}}</li>
+    {% endfor %}
+</ul>
+
+USERS THAT FOLLOW ME:
+<ul>
+    {% for user in users.that_follow_me %}
+    <li>{{user}}</li>
+    {% endfor %}
+</ul>
+</div>
+    {% endblock %}

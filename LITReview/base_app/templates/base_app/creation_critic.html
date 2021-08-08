@@ -1,93 +1,91 @@
+{% extends 'base_app/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Créer une critique</title>
+{% block flux-posts %}
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/creation_critic.css' %}" type="text/css">
-</head>
-<body>
-<img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
-<h2>Créer une critique</h2>
 
-<div class="rectangle" id="book_field"></div>
-<p class="title_fields" id="title_book_field">Livre / Article</p>
+<div class="content">
+    <div class="rectangle" id="title"></div>
+    <h2>Créer une critique</h2>
 
-<div class="rectangle" id="review_field"></div>
-<p class="title_fields" id="title_review_field">Critique</p>
+    <div class="rectangle" id="book_field"></div>
+    <p class="title_fields" id="title_book_field">Livre / Article</p>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form_ticket.non_field_errors %}
-        <div class="errors">
-             {{ field }}
+    <div class="rectangle" id="review_field"></div>
+    <p class="title_fields" id="title_review_field">Critique</p>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form_ticket.non_field_errors %}
+            <div class="errors">
+                 {{ field }}
+            </div>
+        {% endfor %}
+        <div class="title">
+            <div class="fieldWrapper" id="title">
+                {{ form_ticket.title.errors }}
+                <label for="{{ form_ticket.title.id_for_label }}">Title:</label>
+                {{ form_ticket.title }}
+            </div>
         </div>
-    {% endfor %}
-    <div class="title">
-        <div class="fieldWrapper" id="title">
-            {{ form_ticket.title.errors }}
-            <label for="{{ form_ticket.title.id_for_label }}">Title:</label>
-            {{ form_ticket.title }}
+
+        <div class="description">
+            <div class="fieldWrapper" id="description">
+                {{ form_ticket.description.errors }}
+                <label for="{{ form_ticket.description.id_for_label }}">Description:</label>
+                    <p id="false_description"></p>
+                <textarea id="id_description" name="description" cols="40" rows="10" required=""></textarea>
+
+            </div>
         </div>
-    </div>
 
-    <div class="description">
-        <div class="fieldWrapper" id="description">
-            {{ form_ticket.description.errors }}
-            <label for="{{ form_ticket.description.id_for_label }}">Description:</label>
-<!--            {{ form.description }}-->
-            <textarea id="id_description" name="description" cols="40" rows="10" required=""></textarea>
-
+        <div class="image">
+            <div class="fieldWrapper" id="image">
+                {{ form_ticket.image.errors }}
+                <label for="{{ form_ticket.image.id_for_label }}">Image:</label>
+                <input type="file" name="image" accept="image/*" required="" id="id_image">
+            </div>
         </div>
-    </div>
 
-    <div class="image">
-        <div class="fieldWrapper" id="image">
-            {{ form_ticket.image.errors }}
-            <label for="{{ form_ticket.image.id_for_label }}">Image:</label>
-            <input type="file" name="image" accept="image/*" required="" id="id_image">
+        {% for field in form_review.non_field_errors %}
+            <div class="errors">
+                 {{ field }}
+            </div>
+        {% endfor %}
+        <div class="headline">
+            <div class="fieldWrapper" id="headline">
+                {{ form_review.headline.errors }}
+                <label for="{{ form_review.headline.id_for_label }}">Headline:</label>
+                {{ form_review.headline }}
+            </div>
         </div>
-    </div>
 
-    {% for field in form_review.non_field_errors %}
-        <div class="errors">
-             {{ field }}
+        <div class="rating">
+            <div class="fieldWrapper" id="rating">
+                {{ form_review.rating.errors }}
+                <label for="{{ form_review.rating.id_for_label }}">Rating:</label>
+                {% for item in  form_review.rating %}
+                    {{item}}
+                {% endfor %}
+    <!--            {{ form_review.rating }}-->
+
+            </div>
         </div>
-    {% endfor %}
-    <div class="headline">
-        <div class="fieldWrapper" id="headline">
-            {{ form_review.headline.errors }}
-            <label for="{{ form_review.headline.id_for_label }}">Headline:</label>
-            {{ form_review.headline }}
+
+        <div class="body">
+            <div class="fieldWrapper" id="body">
+                {{ form_review.body.errors }}
+                <label for="{{ form_review.body.id_for_label }}">Body:</label>
+                <p id="false_description2"></p>
+                <textarea id="id_body" name="body" cols="40" rows="10" required=""></textarea>
+            </div>
         </div>
-    </div>
 
-    <div class="rating">
-        <div class="fieldWrapper" id="rating">
-            {{ form_review.rating.errors }}
-            <label for="{{ form_review.rating.id_for_label }}">Rating:</label>
-            {% for item in  form_review.rating %}
-                {{item}}
-            {% endfor %}
-<!--            {{ form_review.rating }}-->
-
-        </div>
-    </div>
-
-    <div class="body">
-        <div class="fieldWrapper" id="body">
-            {{ form_review.body.errors }}
-            <label for="{{ form_review.body.id_for_label }}">Body:</label>
-            <textarea id="id_body" name="body" cols="40" rows="10" required=""></textarea>
-        </div>
-    </div>
-
-    <button class="validation-button" type="submit">Créer la critique</button>
-</form>
+        <button class="validation-button" type="submit">Créer la critique</button>
+    </form>
 
 
-<button class="back_feed"><a id="back_feed" href="{% url 'base_app:feed' %}">Retour au flux</a></button>
+<!--<button class="back_feed"><a id="back_feed" href="{% url 'base_app:feed' %}">Retour au flux</a></button>-->
 
-</body>
-</html>
+</div>
+{% endblock %}

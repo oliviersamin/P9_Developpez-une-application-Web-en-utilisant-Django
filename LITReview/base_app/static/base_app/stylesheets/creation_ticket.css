@@ -3,27 +3,24 @@
     src: url('Apple Chancery.ttf');
 }
 
-.background{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.6;
+#background{
+    width:600px;
+    height:470px;
+    background: grey;
+    margin-top: 1%;
+    margin-left: 16%;
 }
-
-body{
+.content{
     font-family: 'Apple Chancery';
-    text-shadow: 2px 2px 4px grey;
+    text-shadow: 2px 2px 4px white;
     color: black;
 }
 
 h2{
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
-    position: absolute;
-    left: 450px;
-    top: 0px;
+    margin-left: 37%;
+    margin-top: -52%;
 }
 
 .fieldWrapper{
@@ -32,50 +29,46 @@ h2{
 }
 
 .title{
-    position: absolute;
-    left: 490px;
-    top: 160px;
+    position: relative;
+    margin-left: 35%;
+    margin-top: -5%;
 }
 
 .description{
-    position: absolute;
-    left: 490px;
-    top: 210px;
+    margin-left: 35%;
+    margin-top: 0%;
+}
+
+#false_description{
+    width: 50px;
 }
 
 #id_description{
-    position: absolute;
-/*    left: 650; */
-    top: 250;
+    margin-left: 0%;
+    margin-top: -5%;
 }
 
 .image{
-    position: absolute;
-    left: 490px;
-    top: 440px;
-
+    margin-top: 1%;
+    margin-left: 35%;
 }
 
 #id_image{
-    position: absolute;
-    left: 120px;
-    top: 10px;
+    margin-left: 1%;
+    margin-top: 0%;
     color: black;
     font-family: 'Apple Chancery';
     font-weight: bold;
     font-size: 20px;
     color: black;
-    text-shadow: 2px 2px 4px black;
-
-
+    text-shadow: 2px 2px 4px white;
 }
 
 .validation-button{
     font-family: 'Apple Chancery';
     font-weight: bold;
-    position: absolute;
-    left: 785px;
-    top: 530px;
+    margin-top: 1%;
+    margin-left: 40%;
     border-radius: 15px;
     color: black;
     background: gold;

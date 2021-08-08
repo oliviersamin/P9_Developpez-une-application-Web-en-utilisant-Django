@@ -32,7 +32,7 @@ class Review(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.headline + " - " + str(self.rating) + "\n" + self.body
+        return self.headline + " - " + str(self.rating)
 
 
 class UserFollows(models.Model):
@@ -46,3 +46,5 @@ class UserFollows(models.Model):
         # for unique user-user_followed pairs
         unique_together = ('user', 'followed_user', )
 
+    def __str__(self):
+        return self.user.username + " is following " + self.followed_user.username

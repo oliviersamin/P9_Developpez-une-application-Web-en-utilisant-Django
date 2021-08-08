@@ -1,82 +1,75 @@
+{% extends 'base_app/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create a review</title>
+{% block flux-posts %}
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/modify_review.css' %}" type="text/css">
+<div class="content">
+    <div class="rectangle" id="all_page"></div>
+    <h2>Modifier la critique du ticket de {{review.ticket.user}}</h2>
+<!--    <div class="rectangle" id="book_field"></div>-->
+    <p class="title_fields" id="title_book_field">Livre / Article</p>
 
-</head>
-<body>
-<img src="{% static 'base_app/images/fond_bibli_resized.png' %}" alt="" class="background">
-<h2>Modifier la critique du ticket de {{review.ticket.user}}</h2>
-<div class="rectangle" id="book_field"></div>
-<p class="title_fields" id="title_book_field">Livre / Article</p>
+<!--    <div class="rectangle" id="review_field"></div>-->
+    <p class="title_fields" id="title_review_field">Critique</p>
 
-<div class="rectangle" id="review_field"></div>
-<p class="title_fields" id="title_review_field">Critique</p>
-
-    <div class="title">
-        <div class="fieldWrapper" id="title">
-            <label for="{{ form_ticket.title.id_for_label }}">Title:</label>
-            {{ review.ticket.title }}
+        <div class="title">
+            <div class="fieldWrapper" id="title">
+                <label for="{{ form_ticket.title.id_for_label }}">Title:</label>
+                <p class="content_title" > {{ review.ticket.title }} </p>
+            </div>
         </div>
-    </div>
 
-    <div class="description">
-        <div class="fieldWrapper" id="description">
-            <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{review.ticket.image_path}}" alt="" id="image_ticket">
-            <label for="{{ form_ticket.description.id_for_label }}">Description:</label>
-            <p id="ticket_description">{{ review.ticket.description }}</p>
+        <div class="description">
+            <div class="fieldWrapper" id="description">
+                <label for="{{ form_ticket.description.id_for_label }}">Description:</label>
+                <p id="ticket_description">{{ review.ticket.description }}</p>
+                <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{review.ticket.image_path}}" alt="" id="image_ticket">
 
+            </div>
         </div>
-    </div>
 
-<!--    <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{ticket.image_path}}" alt="" id="image_ticket">-->
-
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% for field in form_review.non_field_errors %}
-        <div class="errors">
-             {{ field }}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form_review.non_field_errors %}
+            <div class="errors">
+                 {{ field }}
+            </div>
+        {% endfor %}
+        <div class="headline">
+            <div class="fieldWrapper" id="headline">
+                {{ form_review.headline.errors }}
+                <label for="{{ form_review.headline.id_for_label }}">Headline:</label>
+                {{ form_review.headline }}
+            </div>
         </div>
-    {% endfor %}
-    <div class="headline">
-        <div class="fieldWrapper" id="headline">
-            {{ form_review.headline.errors }}
-            <label for="{{ form_review.headline.id_for_label }}">Headline:</label>
-            {{ form_review.headline }}
+
+        <div class="rating">
+            <div class="fieldWrapper" id="rating">
+                {{ form_review.rating.errors }}
+                <label for="{{ form_review.rating.id_for_label }}">Rating:</label>
+    <!--            {{ form_review.rating }}-->
+                {% for item in  form_review.rating %}
+                    {{item}}
+                {% endfor %}
+
+            </div>
         </div>
-    </div>
 
-    <div class="rating">
-        <div class="fieldWrapper" id="rating">
-            {{ form_review.rating.errors }}
-            <label for="{{ form_review.rating.id_for_label }}">Rating:</label>
-<!--            {{ form_review.rating }}-->
-            {% for item in  form_review.rating %}
-                {{item}}
-            {% endfor %}
-
+        <div class="body">
+            <div class="fieldWrapper" id="body">
+                {{ form_review.body.errors }}
+                <label for="{{ form_review.body.id_for_label }}">Body:</label>
+                <textarea id="id_body" name="body" cols="40" rows="10" required="">
+                    {{form_review.body.value}}
+                </textarea>
+            </div>
         </div>
-    </div>
 
-    <div class="body">
-        <div class="fieldWrapper" id="body">
-            {{ form_review.body.errors }}
-            <label for="{{ form_review.body.id_for_label }}">Body:</label>
-            <textarea id="id_body" name="body" cols="40" rows="10" required="">
-                {{form_review.body.value}}
-            </textarea>
-        </div>
-    </div>
-
-    <button class="validation-button" type="submit">Modifier la critique</button>
-</form>
+        <button class="validation-button" type="submit">Modifier la critique</button>
+    </form>
 
 
-<button class="back_feed"><a id="back_feed" href="{% url 'base_app:feed' %}">Retour au flux</a></button>
+<!--    <button class="back_feed"><a id="back_feed" href="{% url 'base_app:feed' %}">Retour au flux</a></button>-->
 
-</body>
-</html>
+</div>
+{% endblock %}
