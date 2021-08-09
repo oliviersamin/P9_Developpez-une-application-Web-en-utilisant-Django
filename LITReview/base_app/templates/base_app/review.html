@@ -19,7 +19,8 @@
             </div>
             <h3> {{post.ticket.title}} </h3>
             <div class="ticket-content-review">
-                <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{post.ticket.image_path}}">
+                <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{post.ticket.image_path}}"
+                     id="ticket_inside_review_image">
                 <p class="description">{{post.ticket.description}}</p>
             </div>
         </div>

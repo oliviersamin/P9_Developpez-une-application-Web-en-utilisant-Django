@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 from django.views import generic, View
 from .forms import CreateTicket, CreateReview
 from .filter_viewable_posts import get_viewable_posts
-from . import validation_forms as vf
 # import os
 
 
@@ -26,7 +25,11 @@ class CreationTicketForm(View):
         return render(request, self.template_name, context=context)
 
     def post(self, request):
-        if vf.method_post_ticket_form(request):
+        form_ticket = CreateTicket(request.POST, request.FILES)
+        if form_ticket.is_valid():
+            ticket = form_ticket.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
             return redirect('feed/')
 
 
@@ -41,8 +44,17 @@ class CreationCriticForm(View):
         return render(request, 'base_app/creation_critic.html', context=context)
 
     def post(self, request):
-        form = self.form(request.POST, request.FILES)
-        if vf.method_post_review_without_ticket_froms(request):
+        # form = self.form(request.POST, request.FILES)
+        form_ticket = CreateTicket(request.POST, request.FILES)
+        form_review = CreateReview(request.POST)
+        if form_ticket.is_valid() and form_review.is_valid():
+            ticket = form_ticket.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+            review = form_review.save(commit=False)
+            review.ticket = ticket
+            review.user = request.user
+            review.save()
             return redirect('feed/')
 
 
@@ -97,32 +109,40 @@ def my_posts(request):
 
 
 def create_review_from_ticket(request, ticket_id):
-    ticket = mod.Ticket.objects.filter(pk=ticket_id)[0]
+    ticket = mod.Ticket.objects.get(pk=ticket_id)
     if (request.method == "POST"):
-        if vf.method_post_review_form(request, ticket):
+        form_review = CreateReview(request.POST)
+        if form_review.is_valid():
+            review = form_review.save(commit=False)
+            review.ticket = ticket
+            review.user = request.user
+            review.save()
             return redirect('feed/')
     else:
-        form_review = CreateReview()
+        form_review = CreateReview(instance=ticket)
         context = {'ticket': ticket, 'form_review': form_review}
         return render(request, 'base_app/create_review_from_ticket.html', context=context)
 
 
 def modify_ticket(request, ticket_id):
-    ticket = mod.Ticket.objects.filter(pk=ticket_id)[0]
+    ticket = mod.Ticket.objects.get(pk=ticket_id)
     if (request.method == "POST") and (request.user == ticket.user):
-        if vf.method_post_modify_ticket_form(request, ticket):
+        form = CreateTicket(request.POST, request.FILES, instance=ticket)
+        if form.is_valid():
+            form.save()
             return redirect('feed/')
     else:
-        initial = {'title': ticket.title, 'image': ticket.image, 'description': ticket.description}
-        form = CreateTicket(initial=initial)
+        form = CreateTicket(instance=ticket)
         context = {'form': form, 'current_image_name': ticket.image_path}
         return render(request, 'base_app/modify_post.html', context=context)
 
 
 def modify_review(request, review_id):
-    review = mod.Review.objects.filter(pk=review_id)[0]
+    review = mod.Review.objects.get(pk=review_id)
     if (request.method == "POST") and (request.user == review.user):
-        if vf.method_post_modify_review_form(request, review):
+        form_review = CreateReview(request.POST, instance=review)
+        if form_review.is_valid():
+            form_review.save()
             return redirect('feed/')
     else:
         initial = {'headline': review.headline, 'rating': review.rating, 'body': review.body}

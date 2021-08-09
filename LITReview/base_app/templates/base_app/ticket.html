@@ -1,4 +1,6 @@
 {% load static %}
+{% load display_create_critic_button %}
+
 <div class="ticket">
     <div class="top-ticket">
         <div>{{post.user.username}} a demandé une critique </div>
@@ -6,14 +8,14 @@
     </div>
     <h3> {{post.title}}</h3>
     <div class="ticket-content">
-        <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{post.image_path}}">
+        <img src="{% static '/base_app/PUBLIC_IMAGES/' %}{{post.image_path}}" id="ticket_image">
         <p class="description">{{post.description}}</p>
-<!--        {% block button_critic %}{% endblock %}-->
-        <button id="add_critic"
-                onclick="window.location.href='{% url 'base_app:create_review_from_ticket' ticket_id=post.pk %}';">
-                Créer une critique
-        </button>
-
+        {% if not post.pk|has_review %}
+            <button id="add_critic"
+                    onclick="window.location.href='{% url 'base_app:create_review_from_ticket' ticket_id=post.pk %}';">
+                    Créer une critique
+            </button>
+        {% endif %}
     </div>
     {% if post.user == request.user %}
         <div class="change_buttons">

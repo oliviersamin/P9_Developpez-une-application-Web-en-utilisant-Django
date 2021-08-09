@@ -136,6 +136,9 @@ header nav a:hover, header nav a:focus{
 
 }
 
+#ticket_image{
+    width: 200px;
+}
 
 #add_critic{
     border-radius: 7px;
@@ -195,6 +198,10 @@ header nav a:hover, header nav a:focus{
 
 .ticket-content-review{
     display: flex;
+}
+
+#ticket_inside_review_image{
+    width: 200px;
 }
 
 footer{
