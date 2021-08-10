@@ -2,21 +2,43 @@
 {% load static %}
 {% block flux-posts %}
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/followers.css' %}" type="text/css">
-<div class="content">
-<h2>Abonnements</h2>
+    <div class="content_search">
+            <div id="search_title">Suivre d'autres utilisateurs</div>
+        <form action="{% url 'base_app:followers' %}" method="get">
+            <input id="search_label" name="search" type="text"
+                   placeholder="Nom de l'utilisateur">
+        </form>
+        <p id="filling_gap"> blabla </p>
+    </div>
 
-USERS THAT I FOLLOW:
-<ul>
-    {% for user in users.I_follow %}
-    <li>{{user}}</li>
-    {% endfor %}
-</ul>
+    <div class="content_lists">
+        <div class="tableau" id="abonnements">
+            <h3>Abonnements</h3>
+            <ul class="list_users">
+                {% for user in users.I_follow %}
+                    <li class="line_user">
+                        <p class="username">{{user.followed_user}}</p>
+                        <button class="button_unfollow"
+                                onclick="window.location.href=
+                                '{% url 'base_app:delete_follower' user.pk %}';">
+                            Désabonner
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="rectangle" id="background_abonnements"></div>
+        <div class="tableau" id="abonnés">
+            <h3>Abonnés</h3>
+            <ul class="list_users">
+                {% for user in users.that_follow_me %}
+                <li class="line_user">
+                    <p class="username">{{user.user}}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="rectangle" id="background_abonnements"></div>
 
-USERS THAT FOLLOW ME:
-<ul>
-    {% for user in users.that_follow_me %}
-    <li>{{user}}</li>
-    {% endfor %}
-</ul>
-</div>
+    </div>
     {% endblock %}

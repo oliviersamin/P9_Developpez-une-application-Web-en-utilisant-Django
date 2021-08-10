@@ -3,10 +3,94 @@
     src: url('Apple Chancery.ttf');
 }
 
-
-.content{
+.content_search{
     font-family: 'Apple Chancery';
     text-shadow: 2px 2px 4px grey;
     color: black;
     font-size: 20px;
+    margin-top: 0%;
+    margin-left: 0%;
+    background: grey;
+    width: 900px;
+
+}
+
+#filling_gap{
+    color: grey;
+    margin-bottom: -5%;
+}
+
+#search_label{
+    color: black;
+    margin-left: 30%;
+    width: 300px;
+    margin-top: 3%;
+}
+
+.content_lists{
+    font-family: 'Apple Chancery';
+    text-shadow: 2px 2px 4px grey;
+    color: black;
+    font-size: 20px;
+    margin-top: 5%;
+    margin-left: 0%;
+}
+
+
+#background_abonnements{
+    width: 900px;
+    height: 50px;
+    background: grey;
+    margin-top: -2.22%;
+    margin-bottom: -2.66%;
+}
+
+.tableau{
+    margin-left: 0%;
+    background: grey;
+}
+#search_title{
+    margin-left: 30%;
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+h3{
+    margin-left: 35%;
+}
+
+.list_users{
+    list-style-type: none;
+}
+
+.line_user{
+    display: flex;
+    border: 2px black solid;
+    width: 800px;
+    height: 40px;
+    margin-top: 2%;
+}
+
+.button_unfollow{
+    font-family: 'Apple Chancery';
+    font-size: 16px;
+    height: 39px;
+    position: absolute;
+    left: 930px;
+    margin-top: 0%;
+    background: grey;
+    font-weight: bold;
+}
+
+.button_unfollow:hover{
+    background: gold;
+}
+
+.username{
+    font-family: 'Apple Chancery';
+    font-size: 20px;
+    color: black;
+    margin-left: 5%;
+    margin-top: 1%;
 }

@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 from django.views import generic, View
 from .forms import CreateTicket, CreateReview
 from .filter_viewable_posts import get_viewable_posts
-# import os
 
 
 class SignUpView(generic.CreateView):
@@ -68,10 +67,16 @@ class ListFollowers(generic.ListView):
         followed_by = []
         user_is_following = mod.UserFollows.objects.filter(user=self.request.user)
         user_is_followed_by = mod.UserFollows.objects.filter(followed_user=self.request.user)
+        print('##########  views page followers ################')
         for user in user_is_following:
-            following.append(user.followed_user)
+            # following.append(user.followed_user)
+            following.append(user)
+            print(user.pk, user)
         for user in user_is_followed_by:
-            followed_by.append(user.user)
+            followed_by.append(user)
+            # followed_by.append(user.user)
+            print(user.pk, user)
+        print('##########################################')
         return {'I_follow': following, 'that_follow_me': followed_by, 'buttons': False}
 
 
@@ -152,16 +157,44 @@ def modify_review(request, review_id):
     return render(request, 'base_app/modify_review.html', context=context)
 
 
-def delete_review(request):
-    context = {}
+def ask_delete_review(request, review_id):
+    context = {'review_id': review_id}
+    return render(request, 'base_app/ask_delete_review.html', context=context)
+
+
+def delete_review(request, review_id):
+    review = mod.Review.objects.get(pk=review_id)
+    if review.user == request.user:
+        review.delete()
+        message = "Votre critique a été supprimée"
+    else:
+        message = "Vous n'êtes pas autorisé à supprimer cette critique"
+    context = {'review_id': review_id, 'message': message}
     return render(request, 'base_app/delete_review.html', context=context)
 
 
-def delete_ticket(request):
-    context = {}
+def ask_delete_ticket(request, ticket_id):
+    context = {'ticket_id': ticket_id}
+    return render(request, 'base_app/ask_delete_ticket.html', context=context)
+
+
+def delete_ticket(request, ticket_id):
+    ticket = mod.Ticket.objects.get(pk=ticket_id)
+    if ticket.user == request.user:
+        ticket.delete()
+        message = "Votre ticket a été supprimé"
+    else:
+        message = "Vous n'êtes pas autorisé à supprimer ce ticket"
+    context = {'ticket_id': ticket_id, 'message': message}
     return render(request, 'base_app/delete_ticket.html', context=context)
 
-
-def followers(request):
-    context = {'buttons': False}
-    return render(request, 'base_app/followers.html', context=context)
+def delete_follower(request, follower_id):
+    print(follower_id)
+    follower = mod.UserFollows.objects.get(pk=follower_id)
+    # print('############### views delete followers ########################')
+    # print(follower, follower.pk, follower.user, follower.followed_user)
+    # print('################################################')
+    follower.delete()
+    message = "Vous avez supprimé {} de vos abonnements".format(follower.followed_user)
+    context = {'message': message}
+    return render(request, 'base_app/delete_follower.html', context=context)

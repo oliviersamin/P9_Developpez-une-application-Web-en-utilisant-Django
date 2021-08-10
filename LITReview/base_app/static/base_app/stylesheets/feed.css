@@ -95,15 +95,23 @@ header nav a:hover, header nav a:focus{
     margin-left: 2%;
     visibility: normal;
 }
-.delete{
+#delete{
+    font-family: 'Apple Chancery';
+    text-shadow: 2px 2px 4px white;
     color: black;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .end_button:hover{
     background: gold;
 }
 .modify{
+    font-family: 'Apple Chancery';
+    text-shadow: 2px 2px 4px white;
     color: black;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 /*  TICKETS  */

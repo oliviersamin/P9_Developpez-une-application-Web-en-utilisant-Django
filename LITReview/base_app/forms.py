@@ -24,3 +24,6 @@ class CreateReview(ModelForm):
         # fields = "__all__"
         fields = ['rating', 'headline', 'body']
         exclude = ['ticket', 'user', 'time_created']
+
+class SearchForm(forms.Form):
+    search = forms.CharField(label='Search', max_length=50)

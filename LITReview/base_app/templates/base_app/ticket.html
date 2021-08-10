@@ -22,7 +22,10 @@
             <button class="end_button"><a class="modify" href="{%url 'base_app:modify_ticket' ticket_id=post.pk %}">
                 Modifier
             </a></button>
-            <button class="end_button"><a class="delete" href="{%url 'base_app:delete_ticket'%}">Supprimer</a></button>
+            <button class="end_button" id="delete"
+                onclick="window.location.href='{% url 'base_app:ask_delete_ticket' ticket_id=post.pk %}';">
+                Supprimer
+            </button>
         </div>
     {% endif %}
 </div>
