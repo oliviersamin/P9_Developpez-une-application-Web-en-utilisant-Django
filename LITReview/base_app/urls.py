@@ -37,5 +37,5 @@ urlpatterns = [
     url('my_posts', views.my_posts, name='my_posts'),
     url(r'^review_from_ticket_(?P<ticket_id>[0-9]+)$', views.create_review_from_ticket,
         name='create_review_from_ticket'),
-
 ]
+

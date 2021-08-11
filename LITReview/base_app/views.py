@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic, View
 from .forms import CreateTicket, CreateReview
 from .filter_viewable_posts import get_viewable_posts
-
+from django.conf import settings
 
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
@@ -79,6 +79,13 @@ class ListFollowers(generic.ListView):
         print('##########################################')
         return {'I_follow': following, 'that_follow_me': followed_by, 'buttons': False}
 
+
+class SearchResultFollower(generic.ListView):
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        user_to_follow = settings.AUTH_USER_MODEL.objects.all()
+        print(user_to_follow)
+        return user_to_follow
 
 def home(request):
     context = {}
