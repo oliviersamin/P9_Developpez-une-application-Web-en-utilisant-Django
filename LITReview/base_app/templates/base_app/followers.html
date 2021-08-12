@@ -3,11 +3,20 @@
 {% block flux-posts %}
     <link rel="stylesheet" href="{% static '/base_app/stylesheets/followers.css' %}" type="text/css">
     <div class="content_search">
-            <div id="search_title">Suivre d'autres utilisateurs</div>
-        <form action="{% url 'base_app:followers' %}" method="get">
-            <input id="search_label" name="search" type="text"
-                   placeholder="Nom de l'utilisateur">
-        </form>
+        <div id="search_title">Suivre d'autres utilisateurs</div>
+            <form action= "{% url 'base_app:add_follower' %}" method="get">
+<!--                {% csrf_token %}-->
+                <div id="form_content">
+                    <input type="text" name="username" placeholder="Nom de l'utilisateur" id="search">
+<!--                                    <button class="validation-button" type="submit"-->
+<!--                onclick="window.location.href='{% url 'base_app:add_follower' %}';">-->
+<!--                    S'abonner-->
+<!--                </button>-->
+                    <button class="validation-button" type="submit">
+                        S'abonner
+                    </button>
+                </div>
+            </form>
         <p id="filling_gap"> blabla </p>
     </div>
 

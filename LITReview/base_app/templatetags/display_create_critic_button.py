@@ -10,6 +10,9 @@ register = template.Library()
 
 # @register.simple_tag
 def has_review(ticket_id):
+    """ filter that return if the Ticket instance has a review already existing
+     It is used to display a button to create a critic in the ticket.html file"""
+
     reviews = Review.objects.all()
     for review in reviews:
         if ticket_id == review.ticket.pk:

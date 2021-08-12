@@ -1,0 +1,8 @@
+{% extends 'base_app/base.html' %}
+{% load static %}
+{% block flux-posts %}
+    <link rel="stylesheet" href="{% static '/base_app/stylesheets/add_follower.css' %}" type="text/css">
+    <div class="rectangle" id="background"></div>
+    <div id="message"> {{message}} </div>
+    <p class="space_for_footer"> '</p>
+{%  endblock %}

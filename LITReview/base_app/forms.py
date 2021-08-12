@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from . import models as mod
 
 # class CreateTicket(forms.Form):
@@ -25,5 +25,5 @@ class CreateReview(ModelForm):
         fields = ['rating', 'headline', 'body']
         exclude = ['ticket', 'user', 'time_created']
 
-class SearchForm(forms.Form):
-    search = forms.CharField(label='Search', max_length=50)
+class SearchForm(Form):
+    username = forms.CharField(label='Search', max_length=50)

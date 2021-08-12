@@ -6,9 +6,9 @@
         <div>{{post.user.username}} a demandé une critique </div>
         <div>{{post.time_created}}</div>
     </div>
-    <h3> {{post.title}}</h3>
+    <h3> {{post.title}} {{post.image}}</h3>
     <div class="ticket-content">
-        <img src="{{post.image}}" id="ticket_image">
+        <img src="{% static 'base_app/' %}{{post.image}}" id="ticket_image">
         <p class="description">{{post.description}}</p>
         {% if not post.pk|has_review %}
             <button id="add_critic"

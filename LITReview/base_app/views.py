@@ -5,16 +5,15 @@ from itertools import chain
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic, View
-from .forms import CreateTicket, CreateReview
+from .forms import CreateTicket, CreateReview, SearchForm
 from .filter_viewable_posts import get_viewable_posts
 from django.conf import settings
-
-class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 
 class CreationTicketForm(View):
+    """ create a new ticket from the feed or my_posts pages """
     form = CreateTicket
     template_name = 'base_app/creation_ticket.html'
 
@@ -32,7 +31,43 @@ class CreationTicketForm(View):
             return redirect('feed/')
 
 
+class SearchFollowerForm(View):
+    """ class used to add if possible a new user to follow using the search form """
+    form = SearchForm
+    template_name = 'base_app/add_follower.html'
+
+    def get(self, request):
+        """ 3 cases are possibles when the form is sent:
+          1 - the user entered does not exist and cannot be followed
+          2 - the user exists but is already followed by the user
+          3 - the user exists and is not yet followed by the user"""
+
+        user_to_follow = ''
+        form_follower = SearchForm(request.GET)
+        if form_follower.is_valid():
+            try:
+                user_to_follow = User.objects.filter(username=request.GET.get('username'))[0]
+            except:
+                message = "L'utilisateur " + request.GET.get('username') + " n'existe pas"
+                context = {'message': message}
+                return render(request, self.template_name, context=context)
+            user_is_following = mod.UserFollows.objects.filter(user=request.user)
+            for user in user_is_following:
+                if user.followed_user == user_to_follow:
+                    message = 'Vous suivez déjà ' + user.followed_user.username
+                    context = {'message': message}
+                    return render(request, self.template_name, context=context)
+            follower = mod.UserFollows()
+            follower.user = self.request.user
+            follower.followed_user = user_to_follow
+            follower.save()
+            message = 'Vous suivez maintenant ' + request.GET.get('username')
+            context = {'message': message}
+            return render(request, self.template_name, context=context)
+
+
 class CreationCriticForm(View):
+    """ class used to create a new critic from the feed or my_posts pages  """
     form = CreateTicket
     template_name = 'base_app/creation_critic.html'
 
@@ -40,7 +75,7 @@ class CreationCriticForm(View):
         form_ticket = CreateTicket()
         form_review = CreateReview()
         context = {'form_ticket': form_ticket, 'form_review': form_review}
-        return render(request, 'base_app/creation_critic.html', context=context)
+        return render(request, self.template_name, context=context)
 
     def post(self, request):
         # form = self.form(request.POST, request.FILES)
@@ -58,6 +93,9 @@ class CreationCriticForm(View):
 
 
 class ListFollowers(generic.ListView):
+    """ class used to find and display the users followed by the user connected
+     and to find and display the users that are following the user connected"""
+
     model = mod.UserFollows
     context_object_name = 'users'
     template_name = 'base_app/followers.html'
@@ -67,27 +105,15 @@ class ListFollowers(generic.ListView):
         followed_by = []
         user_is_following = mod.UserFollows.objects.filter(user=self.request.user)
         user_is_followed_by = mod.UserFollows.objects.filter(followed_user=self.request.user)
-        print('##########  views page followers ################')
         for user in user_is_following:
-            # following.append(user.followed_user)
             following.append(user)
-            print(user.pk, user)
         for user in user_is_followed_by:
             followed_by.append(user)
-            # followed_by.append(user.user)
-            print(user.pk, user)
-        print('##########################################')
         return {'I_follow': following, 'that_follow_me': followed_by, 'buttons': False}
 
 
-class SearchResultFollower(generic.ListView):
-    def get_queryset(self):
-        query = self.request.GET.get('search')
-        user_to_follow = settings.AUTH_USER_MODEL.objects.all()
-        print(user_to_follow)
-        return user_to_follow
-
 def home(request):
+    """ display the home page with the signup and login buttons """
     context = {}
     return render(request, 'base_app/home.html', context=context)
 
@@ -105,6 +131,7 @@ def feed(request):
 
 
 def my_posts(request):
+    """ display the tickets and reviews of the connected user only """
     reviews = mod.Review.objects.filter(user=request.user).order_by('-time_created')
     tickets = mod.Ticket.objects.filter(user=request.user).order_by('-time_created')
     reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
@@ -121,6 +148,7 @@ def my_posts(request):
 
 
 def create_review_from_ticket(request, ticket_id):
+    """ use an existing ticket to create a new review of it """
     ticket = mod.Ticket.objects.get(pk=ticket_id)
     if (request.method == "POST"):
         form_review = CreateReview(request.POST)
@@ -137,6 +165,7 @@ def create_review_from_ticket(request, ticket_id):
 
 
 def modify_ticket(request, ticket_id):
+    """ use the existing ticket to display and modify it """
     ticket = mod.Ticket.objects.get(pk=ticket_id)
     if (request.method == "POST") and (request.user == ticket.user):
         form = CreateTicket(request.POST, request.FILES, instance=ticket)
@@ -150,6 +179,8 @@ def modify_ticket(request, ticket_id):
 
 
 def modify_review(request, review_id):
+    """ use an existing review to display and modify it if the user asking for the modification is
+     the user that created the review"""
     review = mod.Review.objects.get(pk=review_id)
     if (request.method == "POST") and (request.user == review.user):
         form_review = CreateReview(request.POST, instance=review)
@@ -165,11 +196,13 @@ def modify_review(request, review_id):
 
 
 def ask_delete_review(request, review_id):
+    """ ask for a confirmation before deleting the review """
     context = {'review_id': review_id}
     return render(request, 'base_app/ask_delete_review.html', context=context)
 
 
 def delete_review(request, review_id):
+    """ if the user asking for the deletion is the user that created the review then it is deleted """
     review = mod.Review.objects.get(pk=review_id)
     if review.user == request.user:
         review.delete()
@@ -181,11 +214,13 @@ def delete_review(request, review_id):
 
 
 def ask_delete_ticket(request, ticket_id):
+    """ ask for a confirmation before deleting the ticket """
     context = {'ticket_id': ticket_id}
     return render(request, 'base_app/ask_delete_ticket.html', context=context)
 
 
 def delete_ticket(request, ticket_id):
+    """ if the user asking for the deletion is the user that created the review then it is deleted """
     ticket = mod.Ticket.objects.get(pk=ticket_id)
     if ticket.user == request.user:
         ticket.delete()
@@ -195,13 +230,16 @@ def delete_ticket(request, ticket_id):
     context = {'ticket_id': ticket_id, 'message': message}
     return render(request, 'base_app/delete_ticket.html', context=context)
 
+
 def delete_follower(request, follower_id):
-    print(follower_id)
+    """ if the user asking for deletion is the user in the follower instance
+    then the user followed is deleted """
     follower = mod.UserFollows.objects.get(pk=follower_id)
-    # print('############### views delete followers ########################')
-    # print(follower, follower.pk, follower.user, follower.followed_user)
-    # print('################################################')
-    follower.delete()
-    message = "Vous avez supprimé {} de vos abonnements".format(follower.followed_user)
-    context = {'message': message}
+    if follower.user == request.user:
+        follower.delete()
+        message = "Vous avez supprimé {} de vos abonnements".format(follower.followed_user)
+        context = {'message': message}
+    else:
+        message = "Vous n'êtes pas autorisé à supprimer cet abonnement"
+        context = {'message': message}
     return render(request, 'base_app/delete_follower.html', context=context)

@@ -20,11 +20,38 @@
     margin-bottom: -5%;
 }
 
+#form_content{
+    display: flex;
+}
+
 #search_label{
     color: black;
     margin-left: 30%;
     width: 300px;
     margin-top: 3%;
+}
+
+#search{
+    margin-top: 3%;
+    color: black;
+    margin-left:30%;
+    width: 300px;
+}
+
+.validation-button{
+    font-family: 'Apple Chancery';
+    font-weight: bold;
+    margin-top: 3%;
+    margin-left: 5%;
+    border-radius: 15px;
+    color: black;
+    background: gold;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.validation-button:hover{
+    background: grey;
 }
 
 .content_lists{

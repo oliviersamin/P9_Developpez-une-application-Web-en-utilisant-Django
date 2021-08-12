@@ -1,0 +1,27 @@
+@font-face{
+    font-family: 'Apple Chancery';
+    src: url('Apple Chancery.ttf');
+}
+
+
+#background{
+    width:600px;
+    height:200px;
+    background: grey;
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
+#message{
+    font-family: 'Apple Chancery';
+    color: black;
+    font-size: 27px;
+    margin-top: -15%;
+    margin-left: 0%;
+    text-align: center;
+}
+
+.space_for_footer{
+    color: grey;
+    margin-bottom: 15%;
+}
