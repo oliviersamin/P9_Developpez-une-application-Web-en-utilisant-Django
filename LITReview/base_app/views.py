@@ -2,13 +2,9 @@ from django.shortcuts import render, redirect
 from . import models as mod
 from django.db.models import CharField, Value
 from itertools import chain
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
 from django.views import generic, View
 from .forms import CreateTicket, CreateReview, SearchForm
 from .filter_viewable_posts import get_viewable_posts
-from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
 
@@ -47,7 +43,7 @@ class SearchFollowerForm(View):
         if form_follower.is_valid():
             try:
                 user_to_follow = User.objects.filter(username=request.GET.get('username'))[0]
-            except:
+            except IndexError:
                 message = "L'utilisateur " + request.GET.get('username') + " n'existe pas"
                 context = {'message': message}
                 return render(request, self.template_name, context=context)
