@@ -60,7 +60,7 @@ When you have finished using the WebSite you may do the following:
 #### 1. In your Web Browser: close your tab or window corresponding to the website
 #### 2. In your terminal stop the server by using the CONTROL-C keys
    
-## 6. Steps to generate a flake8-html file    
+## Steps to generate a flake8-html file    
 If you want to check for the PEP8 validity of the code tou may use the following steps:    
 #### 1. Launch your virtual environment  
 #### 2. Go to the LITReview sub-folder, launch the following command line:   
