@@ -11,7 +11,7 @@
 ***
 
 
-## 1. Program surroundings
+## Program surroundings
 
 ###### This program is the number nine on thirteen projects to be validated in order to get a degree as a developer in Python applications.  
 
@@ -21,11 +21,11 @@ https://openclassrooms.com/fr/paths/322-developpeur-dapplication-python
 
 ###### The aim of this project is to realize a POC of a website following requirement specifications and wireframes
 
-## 2. Preliminary remark
+## Preliminary remark
 **This program has been tested with Python version 3.8.5(default, Jan 27 2021, 15:41:15)**     
 
 
-## 3. Set up the computer before launching the website in a local environment
+## Set up the computer before launching the website in a local environment
 
 ### A. Clone the GitHub repository
 
@@ -44,7 +44,7 @@ To create the virtual environment venv follow the next steps in command line:
 ###### **pip install -r requirements.txt**
 
 
-## 4. Launch the WebSite locally  using command lines
+## Launch the WebSite locally  using command lines
 When the setup has been done the first time, it is not needed to repeat all the previous steps.   
 #### A. Go inside the root working directory named "P9_Developpez-une-application-Web-en-utilisant-Django"
 #### B. Launch your virtual environment with the following command line:
@@ -55,7 +55,7 @@ When the setup has been done the first time, it is not needed to repeat all the 
 #### E. Using the web browser go to the url **http://127.0.0.1:8000**    
 #### F. You are connected to the local website    
 
-## 5. Stop the local server
+## Stop the local server
 When you have finished using the WebSite you may do the following:
 #### 1. In your Web Browser: close your tab or window corresponding to the website
 #### 2. In your terminal stop the server by using the CONTROL-C keys
