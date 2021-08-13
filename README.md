@@ -2,12 +2,12 @@
 
 ***
 ## Table of contents
-1. [Program surroundings](#Program-surroundings)
-2. [Preliminary remark](#Preliminary-remark)
-3. [Setup the computer before launching the website in a local environment](#Setup-the-computer-before-launching-the-website-in-a-local-environment)
-4. [Launch the WebSite locally  using command lines](#Launch-the-WebSite-locally-using-command-lines)
-5. [Stop the local server](#Stop-the-local-server)
-6. [Steps to generate a flake8-html file](#Steps-to-generate-a-flake8-html-file)
+1. [Program surroundings](#program-surroundings)
+2. [Preliminary remark](#preliminary-remark)
+3. [Setup the computer before launching the website in a local environment](#setup-the-computer-before-launching-the-website-in-a-local-environment)
+4. [Launch the WebSite locally  using command lines](#launch-the-WebSite-locally-using-command-lines)
+5. [Stop the local server](#stop-the-local-server)
+6. [Steps to generate a flake8-html file](#steps-to-generate-a-flake8-html-file)
 ***
 
 
