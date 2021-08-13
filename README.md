@@ -2,12 +2,12 @@
 
 ***
 ## Table of contents
-1. [Program surroundings] (#Program-surroundings)
-2. [Preliminary remark] (#Preliminary-remark)
-3. [Setup the computer before launching the website in a local environment] (#Setup-the-computer-before-launching-the-website-in-a-local-environment)
-4. [Launch the WebSite locally  using command lines] (#Launch-the-WebSite-locally-using-command-lines)
-5. [Stop the local server] (#Stop-the-local-server)
-6. [Steps to generate a flake8-html file] (#Steps-to-generate-a-flake8-html-file)
+1. [Program surroundings](#Program-surroundings)
+2. [Preliminary remark](#Preliminary-remark)
+3. [Setup the computer before launching the website in a local environment](#Setup-the-computer-before-launching-the-website-in-a-local-environment)
+4. [Launch the WebSite locally  using command lines](#Launch-the-WebSite-locally-using-command-lines)
+5. [Stop the local server](#Stop-the-local-server)
+6. [Steps to generate a flake8-html file](#Steps-to-generate-a-flake8-html-file)
 ***
 
 
@@ -19,7 +19,7 @@ For more info on that subject please visit the following website:
 https://openclassrooms.com/fr/paths/322-developpeur-dapplication-python
   
 
-######The aim of this project is to realize a POC of a website following requirement specifications and wireframes
+###### The aim of this project is to realize a POC of a website following requirement specifications and wireframes
 
 ## 2. Preliminary remark
 **This program has been tested with Python version 3.8.5(default, Jan 27 2021, 15:41:15)**     
