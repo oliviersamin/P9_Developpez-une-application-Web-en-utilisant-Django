@@ -37,8 +37,7 @@ There are two ways to get this repository:
 * type the following command line     
 ###### git remote add <short_name_of_local_deposit> https://github.com/oliviersamin/P9_Developpez-une-application-Web-en-utilisant-Django.git    
 where <short_name_of_local_deposit> is a name you choose to call later this repository
-* git branch -M main
-* git pull OC main
+* git clone https://github.com/oliviersamin/P9_Developpez-une-application-Web-en-utilisant-Django.git
 the repository is now cloned in your computer
 
 ### B. Create and activate a local environment
