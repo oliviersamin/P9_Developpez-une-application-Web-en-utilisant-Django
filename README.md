@@ -28,7 +28,18 @@ https://openclassrooms.com/fr/paths/322-developpeur-dapplication-python
 ## Set up the computer before launching the website in a local environment
 
 ### A. Get the GitHub repository on your computer
+There are two ways to get this repository:
+#### 1. copy the zipped repository and unzip it where you want on your computer. The following image show you the button to click to copy the zipped repository on your computer  
 ![how to download the repository](https://github.com/oliviersamin/P9_Developpez-une-application-Web-en-utilisant-Django/blob/main/GitHub-get-repository.png)
+#### 2. Clone the repository in command lines
+* Go to your working directory and initialize the directory using the following command   
+###### git init
+* type the following command line     
+###### git remote add <short_name_of_local_deposit> https://github.com/oliviersamin/P9_Developpez-une-application-Web-en-utilisant-Django.git    
+where <short_name_of_local_deposit> is a name you choose to call later this repository
+* git branch -M main
+* git pull OC main
+the repository is now cloned in your computer
 
 ### B. Create and activate a local environment
 To create the virtual environment venv follow the next steps in command line:   
