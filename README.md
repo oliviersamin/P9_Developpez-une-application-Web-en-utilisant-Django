@@ -50,9 +50,8 @@ To create the virtual environment venv follow the next steps in command line:
 ***(env)*** should appear at the beginning of the command line   
 
 ### C. Install all the necessary packages using requirements.txt  
-#### 1. Go in the subdirectory LITReview
 #### 2. Execute the following command line: 
-###### **pip install -r requirements.txt**
+###### **pip install -r LITReview/requirements.txt**
 
 
 ## Launch the WebSite locally  using command lines
@@ -60,11 +59,10 @@ When the setup has been done the first time, it is not needed to repeat all the 
 #### A. Go inside the root working directory named "P9_Developpez-une-application-Web-en-utilisant-Django"
 #### B. Launch your virtual environment with the following command line:
 ###### **source env/bin/activate**   
-#### C. Go in the subdirectory LITReview (where the manage.py file is)
-#### D. Execute the command:
-###### **./manage.py runserver**    
-#### E. Using the web browser go to the url **http://127.0.0.1:8000**    
-#### F. You are connected to the local website    
+#### C. Execute the command:
+###### **LITReview/manage.py runserver**    
+#### D. Using the web browser go to the url **http://127.0.0.1:8000**    
+#### E. You are connected to the local website    
 
 ## Stop the local server
 When you have finished using the WebSite you may do the following:
